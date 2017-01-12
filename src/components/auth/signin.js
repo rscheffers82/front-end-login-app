@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import { reduxForm } from 'redux-form';
+import * as actions from '../../actions';
 
 class Signin extends Component {
   handleFormSubmit( {email, password} ) {
     console.log(email, password);
     // add code to log the user in
+    this.props.signinUser({ email, password });
   }
 
   render() {
@@ -26,14 +28,15 @@ class Signin extends Component {
   }
 }
 
-// const config = {
-//   form: 'signin',
-//   fields: ['email', 'password']
-// };
-
-export default reduxForm({
+const config = {
   form: 'signin',
   fields: ['email', 'password']
-})(Signin);
+};
+
+const mapStateToProps = {
+
+};
+
+export default reduxForm(config, null, actions)(Signin);
 // 1st () are for our configuration
 // 2nd () are for our component

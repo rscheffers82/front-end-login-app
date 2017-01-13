@@ -8,11 +8,14 @@ export function signinUser( {email, password}) {
   return function(dispatch, state) {
     // Submit email/password to the server
     axios.post(`${ROOT_URL}/signin`, { email, password })
+      // request is successfull...
       .then( response => {
-        // request is successfull...
         // - Update state to indicate user is authenticated
         dispatch({ type: AUTH_USER });
+
         // - Save JWT token
+        localStorage.setItem('token', response.data.token);
+
         // - redirect to '/feature'
         browserHistory.push('/feature');
 

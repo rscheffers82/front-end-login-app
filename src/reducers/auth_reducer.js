@@ -1,7 +1,7 @@
 import {
   AUTH_USER,
   UNAUTH_USER
-} from './types';
+} from '../actions/types';
 
 
 export default (state = {}, action) => {

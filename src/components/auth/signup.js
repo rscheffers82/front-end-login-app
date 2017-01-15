@@ -23,6 +23,7 @@ class Signup extends Component {
         <fieldset className="form-group">
           <label>Confirm password:</label>
           <input type="password" className="form-control" {...passwordConfirm}/>
+          {password.touched && password.error && <div className="error">{password.error}</div>}
         </fieldset>
         <button action="submit" className="btn btn-primary">Sign up</button>
       </form>
@@ -30,9 +31,23 @@ class Signup extends Component {
   }
 }
 
+function validate(formProps) {
+  // this function is called whenever one of the fields is changed or loses focus or when the form is loaded or submitted.
+  // minimum requirements are that a errors object is defined and returned
+  // the errors object returned, adds an error object to each form name, eg. password field error is password.error, email = email.error
+  const errors = {};
+
+  if (formProps.password !== formProps.passwordConfirm) {
+    errors.password = 'Ensure passwords match';
+  }
+
+  return errors;
+}
+
 const config = {
   form: 'signup',
-  fields: ['email', 'password', 'passwordConfirm']
+  fields: ['email', 'password', 'passwordConfirm'],
+  validate
 }
 
 function mapStateToProps(state) {

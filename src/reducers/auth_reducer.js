@@ -10,11 +10,13 @@ export default (state = {}, action) => {
     case AUTH_USER:
       return {
         ...state,
+        error: '',
         authenticated: true
       };
     case UNAUTH_USER:
       return {
         ...state,
+        error: '',
         authenticated: false
       };
     case AUTH_ERROR:

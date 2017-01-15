@@ -16,6 +16,3 @@ class SignOut extends Component {
 }
 
 export default connect(null, actions)(SignOut);
-
-git add .
-git commit -m 'create logout component and action generator which takes care of wiping local login data'

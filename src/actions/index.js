@@ -44,6 +44,18 @@ export function signupUser({ email, password }) {
   }
 }
 
+export function fetchMessage() {
+  return function (dispatch, state) {
+    axios.get(ROOT_URL)
+      .then( response => {
+        console.log('success: ', response);
+      })
+      .catch( response => {
+        console.log('failure: ', response);
+      })
+  }
+}
+
 
 export function authError(error) {
   return {
